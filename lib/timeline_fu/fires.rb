@@ -28,7 +28,7 @@ module TimelineFu
             memo
           end
           create_options[:event_type] = event_type.to_s
-
+          create_options[:company_id] = send(opts[:actor]).company_id if send(opts[:actor]).respond_to?(:company_id)
           TimelineEvent.create!(create_options)
         end
 
